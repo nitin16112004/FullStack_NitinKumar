@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitin Kumar - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="8"/><circle fill="url(%23a)" cx="80" cy="5" r="6"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        figure {
+            margin: 0 auto 1.5rem;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        figure:hover {
+            transform: scale(1.05);
+        }
+
+        figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        figure:hover img {
+            transform: scale(1.1);
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        main {
+            padding: 0;
+        }
+
+        section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        section:hover {
+            background-color: #f8f9fa;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            border-radius: 2px;
+        }
+
+        .bio-content {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .education-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .education-item h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .year {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            figure {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <figure>
+                    <img src="ni.jpg" alt=" ">
+                    <figcaption>Professional Portfolio Photo</figcaption>
+                </figure>
+                <h1>Nitin Kumar</h1>
+                <p class="subtitle">Python Developer & Frontend Developer</p>
+            </div>
+        </header>
+
+        <main>
+            <section id="bio">
+                <h2>About Me</h2>
+                <div class="bio-content">
+                    <p>I am a student at GLA University, currently pursuing B.Tech in Computer Science. I have a strong foundation in frontend development, Python programming. Currently exploring the exciting world of web technologies and backend development through hands-on projects and coursework. I'm eager to apply my growing knowledge of programming concepts to real-world applications and contribute to innovative software solutions.</p>
+                    
+                    <p>As a fresher in the tech industry, I'm constantly learning new technologies and best practices. I enjoy building small projects to strengthen my skills in Python and modern web development frameworks. I'm excited about the possibilities that technology offers and look forward to contributing to meaningful projects after graduation.</p>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                
+                <article class="education-item">
+                    <h3>Bachelor of Computer Science</h3>
+                    <div class="institution">GLA University</div>
+                    <time class="year">2023 - 2027 (3rd Year)</time>
+                    <p>Currently pursuing a degree in Computer Science with focus on programming fundamentals, data structures, algorithms, and software development. Active participant in coding competitions and technical workshops.</p>
+                </article>
+
+                <article class="education-item">
+                    <h3>Higher Secondary Education (12th Grade)</h3>
+                    <div class="institution">Oxford Model Senior Secondary School</div>
+                    <time class="year">2022 - 2023</time>
+                    <p>Completed with focus on Mathematics and Science. Developed initial interest in programming and computer applications during this period.</p>
+                </article>
+
+                
+            </section>
+
+            <section id="skills">
+                <h2>Skills & Technologies</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Python Development</h3>
+                        <ul class="skill-list">
+                            <li>Python Fundamentals</li>
+                            <li>Object-Oriented Programming</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li>HTML5 & CSS3</li>
+                            <li>Responsive Web Design</li>
+                            <li>React.js (Learning)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>MongoDB</li>
+                            <li>Linux/Windows</li>
+                            <li>Postman (API Testing)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <ul class="skill-list">
+                            <li>Problem Solving</li>
+                            <li>Quick Learning</li>
+                            <li>Team Collaboration</li>
+                            <li>Time Management</li>
+                            <li>Attention to Detail</li>
+                            <li>Documentation</li>
+                            <li>Debugging</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Information</h2>
+                
+                <div class="contact-info">
+                    <p>I'm excited to connect with fellow developers, potential mentors, and opportunities to learn and grow!</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <strong>Email</strong>
+                            <a href="mailto:nitinkumar16072005@gmail.com">nitinkumar16072005@gmail.com</a>
+                        </div>
+
+                        <div class="contact-item">
+                            <strong>Phone</strong>
+                            <a href="tel:+916386646961">+91 6386646961</a>
+                        </div>
+
+                        <div class="contact-item">
+                            <strong>LinkedIn</strong>
+                            <a href="https://www.linkedin.com/in/nitin-kumar-70b7962b1/" target="_blank">linkedin.com/in/nitin-kumar-70b7962b1</a>
+                        </div>
+
+                        <div class="contact-item">
+                            <strong>GitHub</strong>
+                            <a href="https://github.com/nitin16112004" target="_blank">github.com/nitin16112004</a>
+                        </div>
+
+                        <div class="contact-item">
+                            <strong>Portfolio</strong>
+                            <a href="#" target="_blank">Coming Soon</a>
+                        </div>
+
+                        <div class="contact-item">
+                            <strong>Location</strong>
+                            <span>India</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Nitin Kumar. All rights reserved. Built with HTML and CSS.</p>
+        </footer>
+    </div>
+</body>
+</html>
